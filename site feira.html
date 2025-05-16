@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>♻️ Coleta Seletiva - Patrocínio MG 🌿</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #111;
+      --text: #eee;
+      --primary: #004d40;
+      --primary-light: #00695c;
+      --card-bg: #004d40;
+    }
+    body.light {
+      --bg: #f4f4f4;
+      --text: #111;
+      --primary: #a7ffeb;
+      --primary-light: #80cbc4;
+      --card-bg: #e0f2f1;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    nav {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+      padding: 6px 12px;
+      border-radius: 6px;
+      user-select: none;
+    }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .toggle-mode {
+      cursor: pointer;
+      border: 1px solid var(--text);
+      padding: 7px 14px;
+      margin-top: 12px;
+      border-radius: 6px;
+      font-size: 1rem;
+      user-select: none;
+      display: inline-block;
+      background: transparent;
+      transition: background 0.3s;
+    }
+    .toggle-mode:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    main {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+      flex-grow: 1;
+    }
+    section {
+      margin-bottom: 50px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+      color: var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+    .types {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+    .types div {
+      background: var(--primary);
+      color: var(--text);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+      font-weight: 600;
+      font-size: 1.1rem;
+      user-select: none;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .types div:hover {
+      background: var(--primary-light);
+      transform: scale(1.05);
+      cursor: default;
+    }
+    #mapa {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    }
+    #mapa input {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      font-size: 1.1rem;
+      outline-offset: 2px;
+      transition: box-shadow 0.3s;
+    }
+    #mapa input:focus {
+      box-shadow: 0 0 8px var(--primary-light);
+      outline: none;
+    }
+    #result {
+      padding: 14px;
+      border-radius: 10px;
+      background: var(--primary);
+      margin-bottom: 24px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    #cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      max-height: 420px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+    .card {
+      background: var(--card-bg);
+      padding: 18px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s, background 0.3s;
+      font-weight: 600;
+      user-select: none;
+      cursor: default;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      background: var(--primary-light);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--primary);
+      margin-top: 50px;
+      user-select: none;
+    }
+    ul#bairros-lista {
+      list-style: none;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-left: 20px;
+      color: var(--text);
+    }
+    ul#bairros-lista li {
+      margin-bottom: 10px;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      .types {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+      #cards {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>♻️ Coleta Seletiva Patrocínio - MG 🌿</h1>
+    <nav>
+      <a href="#tipos">📦 Tipos</a>
+      <a href="#mapa">🔍 Mapa</a>
+      <a href="#bairros">🏘️ Bairros</a>
+      <a href="#como">🤝 Como Participar</a>
+    </nav>
+    <div class="toggle-mode" onclick="toggleModo()">🌗 Mudar modo</div>
+  </header>
+  <main>
+    <section id="tipos">
+      <h2>♻️ Tipos de Materiais Recicláveis</h2>
+      <div class="grid types">
+        <div>📄 Papel</div>
+        <div>🥤 Plástico</div>
+        <div>🛠️ Metal</div>
+        <div>🍾 Vidro</div>
+        <div>🍂 Orgânicos</div>
+      </div>
+    </section>
+    <section id="mapa">
+      <h2>🔎 Buscar Bairro</h2>
+      <input type="text" id="search" placeholder="Digite o nome do bairro..." autocomplete="off" />
+      <div id="result">Digite um bairro acima.</div>
+      <div id="cards"></div>
+    </section>
+    <section id="bairros">
+      <h2>🏘️ Bairros e Dias da Coleta</h2>
+      <p>Consulte abaixo os bairros e os respectivos dias da coleta seletiva em Patrocínio - MG.</p>
+      <ul id="bairros-lista"></ul>
+    </section>
+    <section id="como">
+      <h2>🤝 Como Participar</h2>
+      <p>
+        Para participar da coleta seletiva em Patrocínio - MG, separe seus resíduos recicláveis conforme os tipos indicados acima e os deposite nos dias corretos indicados para seu bairro.
+      </p>
+      <p>
+        Evite misturar materiais orgânicos com recicláveis e, sempre que possível, lave os materiais antes de descartá-los. Isso evita odores e melhora o reaproveitamento dos resíduos.
+      </p>
+    </section>
+  </main>
+  <footer>
+    Sistema de coleta desenvolvido para melhor informar a população. 🌱
+  </footer>
+
+  <script>
+    const coleta = {
+      "aeroporto": "Segunda-feira",
+      "afrânio amaral": "Terça-feira",
+      "amir amaral": "Quarta-feira",
+      "área rural de patrocínio": "Quinta-feira",
+      "belvedere": "Sexta-feira",
+      "boa esperança": "Segunda-feira",
+      "café mineiro": "Terça-feira",
+      "carajás": "Quarta-feira",
+      "centro": "Quinta-feira",
+      "cidade jardim": "Sexta-feira",
+      "congonhas": "Segunda-feira",
+      "constantino": "Terça-feira",
+      "cruzeiro da serra": "Quarta-feira",
+      "dona diva": "Quinta-feira",
+      "enéas ferreira de aguiar": "Sexta-feira",
+      "floresta": "Segunda-feira",
+      "industrial": "Terça-feira",
+      "jardim eldorado": "Quarta-feira",
+      "manoel nunes": "Quinta-feira",
+      "marciano brandão": "Sexta-feira",
+      "matinha": "Segunda-feira",
+      "morada do sol": "Terça-feira",
+      "morada nova": "Quarta-feira",
+      "nações": "Quinta-feira",
+      "nossa senhora de fátima": "Sexta-feira",
+      "olímpio nunes": "Segunda-feira",
+      "ouro preto": "Terça-feira",
+      "padre eustáquio": "Quarta-feira",
+      "parque das águas": "Quinta-feira",
+      "salitre de minas": "Sexta-feira",
+      "santa luzia dos barros": "Segunda-feira",
+      "santa terezinha": "Terça-feira",
+      "santo antônio": "Quarta-feira",
+      "são benedito": "Quinta-feira",
+      "são cristóvão": "Sexta-feira",
+      "são francisco": "Segunda-feira",
+      "são joão da serra negra": "Terça-feira",
+      "são judas": "Quarta-feira",
+      "são lucas": "Quinta-feira",
+      "são vicente": "Sexta-feira",
+      "serra negra": "Segunda-feira",
+      "silvano": "Terça-feira"
+    };
+
+    function toggleModo() {
+      document.body.classList.toggle('light');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const search = document.getElementById('search');
+      const result = document.getElementById('result');
+      const cards = document.getElementById('cards');
+      const lista = document.getElementById('bairros-lista');
+
+      // Preencher cards e lista
+      Object.entries(coleta).forEach(([bairro, dia]) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<strong>${bairro.charAt(0).toUpperCase() + bairro.slice(1)}</strong><br>🗓️ ${dia}`;
+        cards.appendChild(card);
+
+        const li = document.createElement('li');
+        li.textContent = `${bairro.charAt(0).toUpperCase() + bairro.slice(1)}: ${dia}`;
+        lista.appendChild(li);
+      });
+
+      search.addEventListener('input', () => {
+        const q = search.value.trim().toLowerCase();
+        if (!q) {
+          result.textContent = 'Digite um bairro acima. 🔍';
+          return;
+        }
+        if (coleta[q]) {
+          const bairroCapitalizado = q.charAt(0).toUpperCase() + q.slice(1);
+          result.textContent = `${bairroCapitalizado}: 🗓️ ${coleta[q]}`;
+          // Scroll para o card correspondente
+          const cardsArray = Array.from(cards.children);
+          const card = cardsArray.find(c => c.textContent.toLowerCase().startsWith(bairroCapitalizado.toLowerCase()));
+          if (card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            cardsArray.forEach(c => c.style.background = '');
+            card.style.background = 'var(--primary-light)';
+          }
+        } else {
+          result.textContent = 'Bairro não encontrado. ❌';
+          // Remove destaque dos cards
+          Array.from(cards.children).forEach(c => c.style.background = '');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
