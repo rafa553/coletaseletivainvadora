@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -98,6 +99,9 @@
       align-items: center;
       gap: 8px;
     }
+    h3 {
+      font-size: 1.4rem;
+    }
     p {
       line-height: 1.6;
       margin-bottom: 16px;
@@ -187,16 +191,13 @@
       margin-top: 50px;
       user-select: none;
     }
-    ul#bairros-lista {
+    ul {
       list-style: none;
-      font-size: 1.05rem;
-      max-width: 600px;
-      margin: 0 auto;
       padding-left: 20px;
       color: var(--text);
     }
-    ul#bairros-lista li {
-      margin-bottom: 10px;
+    ul li {
+      margin-bottom: 8px;
     }
     @media (max-width: 600px) {
       header h1 {
@@ -244,8 +245,65 @@
     </section>
     <section id="bairros">
       <h2>🏘️ Bairros e Dias da Coleta</h2>
-      <p>Consulte abaixo os bairros e os respectivos dias da coleta seletiva em Patrocínio - MG.</p>
-      <ul id="bairros-lista"></ul>
+      <p>Consulte abaixo os bairros agrupados por dia da coleta seletiva em Patrocínio - MG.</p>
+      <h3 style="color: var(--primary-light); margin-top: 20px;">Segunda-feira</h3>
+<ul>
+  <li>Aeroporto</li>
+  <li>Boa Esperança</li>
+  <li>Congonhas</li>
+  <li>Floresta</li>
+  <li>Matinha</li>
+  <li>Olímpio Nunes</li>
+  <li>Santa Luzia Dos Barros</li>
+  <li>Serra Negra</li>
+  <li>São Francisco</li>
+</ul>
+<h3 style="color: var(--primary-light); margin-top: 20px;">Terça-feira</h3>
+<ul>
+  <li>Afrânio Amaral</li>
+  <li>Café Mineiro</li>
+  <li>Constantino</li>
+  <li>Industrial</li>
+  <li>Morada Do Sol</li>
+  <li>Ouro Preto</li>
+  <li>Santa Terezinha</li>
+  <li>Silvano</li>
+  <li>São João Da Serra Negra</li>
+</ul>
+<h3 style="color: var(--primary-light); margin-top: 20px;">Quarta-feira</h3>
+<ul>
+  <li>Amir Amaral</li>
+  <li>Carajás</li>
+  <li>Cruzeiro Da Serra</li>
+  <li>Jardim Eldorado</li>
+  <li>Morada Nova</li>
+  <li>Padre Eustáquio</li>
+  <li>Santo Antônio</li>
+  <li>São Judas</li>
+</ul>
+<h3 style="color: var(--primary-light); margin-top: 20px;">Quinta-feira</h3>
+<ul>
+  <li>Centro</li>
+  <li>Dona Diva</li>
+  <li>Manoel Nunes</li>
+  <li>Nações</li>
+  <li>Parque Das Águas</li>
+  <li>São Benedito</li>
+  <li>São Lucas</li>
+  <li>Área Rural De Patrocínio</li>
+</ul>
+<h3 style="color: var(--primary-light); margin-top: 20px;">Sexta-feira</h3>
+<ul>
+  <li>Belvedere</li>
+  <li>Cidade Jardim</li>
+  <li>Enéas Ferreira De Aguiar</li>
+  <li>Marciano Brandão</li>
+  <li>Nossa Senhora De Fátima</li>
+  <li>Salitre De Minas</li>
+  <li>São Cristóvão</li>
+  <li>São Vicente</li>
+</ul>
+
     </section>
     <section id="como">
       <h2>🤝 Como Participar</h2>
@@ -262,71 +320,21 @@
   </footer>
 
   <script>
-    const coleta = {
-      "aeroporto": "Segunda-feira",
-      "afrânio amaral": "Terça-feira",
-      "amir amaral": "Quarta-feira",
-      "área rural de patrocínio": "Quinta-feira",
-      "belvedere": "Sexta-feira",
-      "boa esperança": "Segunda-feira",
-      "café mineiro": "Terça-feira",
-      "carajás": "Quarta-feira",
-      "centro": "Quinta-feira",
-      "cidade jardim": "Sexta-feira",
-      "congonhas": "Segunda-feira",
-      "constantino": "Terça-feira",
-      "cruzeiro da serra": "Quarta-feira",
-      "dona diva": "Quinta-feira",
-      "enéas ferreira de aguiar": "Sexta-feira",
-      "floresta": "Segunda-feira",
-      "industrial": "Terça-feira",
-      "jardim eldorado": "Quarta-feira",
-      "manoel nunes": "Quinta-feira",
-      "marciano brandão": "Sexta-feira",
-      "matinha": "Segunda-feira",
-      "morada do sol": "Terça-feira",
-      "morada nova": "Quarta-feira",
-      "nações": "Quinta-feira",
-      "nossa senhora de fátima": "Sexta-feira",
-      "olímpio nunes": "Segunda-feira",
-      "ouro preto": "Terça-feira",
-      "padre eustáquio": "Quarta-feira",
-      "parque das águas": "Quinta-feira",
-      "salitre de minas": "Sexta-feira",
-      "santa luzia dos barros": "Segunda-feira",
-      "santa terezinha": "Terça-feira",
-      "santo antônio": "Quarta-feira",
-      "são benedito": "Quinta-feira",
-      "são cristóvão": "Sexta-feira",
-      "são francisco": "Segunda-feira",
-      "são joão da serra negra": "Terça-feira",
-      "são judas": "Quarta-feira",
-      "são lucas": "Quinta-feira",
-      "são vicente": "Sexta-feira",
-      "serra negra": "Segunda-feira",
-      "silvano": "Terça-feira"
-    };
-
+    const coleta = {'aeroporto': 'Segunda-feira', 'afrânio amaral': 'Terça-feira', 'amir amaral': 'Quarta-feira', 'área rural de patrocínio': 'Quinta-feira', 'belvedere': 'Sexta-feira', 'boa esperança': 'Segunda-feira', 'café mineiro': 'Terça-feira', 'carajás': 'Quarta-feira', 'centro': 'Quinta-feira', 'cidade jardim': 'Sexta-feira', 'congonhas': 'Segunda-feira', 'constantino': 'Terça-feira', 'cruzeiro da serra': 'Quarta-feira', 'dona diva': 'Quinta-feira', 'enéas ferreira de aguiar': 'Sexta-feira', 'floresta': 'Segunda-feira', 'industrial': 'Terça-feira', 'jardim eldorado': 'Quarta-feira', 'manoel nunes': 'Quinta-feira', 'marciano brandão': 'Sexta-feira', 'matinha': 'Segunda-feira', 'morada do sol': 'Terça-feira', 'morada nova': 'Quarta-feira', 'nações': 'Quinta-feira', 'nossa senhora de fátima': 'Sexta-feira', 'olímpio nunes': 'Segunda-feira', 'ouro preto': 'Terça-feira', 'padre eustáquio': 'Quarta-feira', 'parque das águas': 'Quinta-feira', 'salitre de minas': 'Sexta-feira', 'santa luzia dos barros': 'Segunda-feira', 'santa terezinha': 'Terça-feira', 'santo antônio': 'Quarta-feira', 'são benedito': 'Quinta-feira', 'são cristóvão': 'Sexta-feira', 'são francisco': 'Segunda-feira', 'são joão da serra negra': 'Terça-feira', 'são judas': 'Quarta-feira', 'são lucas': 'Quinta-feira', 'são vicente': 'Sexta-feira', 'serra negra': 'Segunda-feira', 'silvano': 'Terça-feira'};
     function toggleModo() {
       document.body.classList.toggle('light');
     }
-
     window.addEventListener('DOMContentLoaded', () => {
       const search = document.getElementById('search');
       const result = document.getElementById('result');
       const cards = document.getElementById('cards');
-      const lista = document.getElementById('bairros-lista');
 
-      // Preencher cards e lista
+      // Preencher cards
       Object.entries(coleta).forEach(([bairro, dia]) => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `<strong>${bairro.charAt(0).toUpperCase() + bairro.slice(1)}</strong><br>🗓️ ${dia}`;
         cards.appendChild(card);
-
-        const li = document.createElement('li');
-        li.textContent = `${bairro.charAt(0).toUpperCase() + bairro.slice(1)}: ${dia}`;
-        lista.appendChild(li);
       });
 
       search.addEventListener('input', () => {
@@ -338,7 +346,6 @@
         if (coleta[q]) {
           const bairroCapitalizado = q.charAt(0).toUpperCase() + q.slice(1);
           result.textContent = `${bairroCapitalizado}: 🗓️ ${coleta[q]}`;
-          // Scroll para o card correspondente
           const cardsArray = Array.from(cards.children);
           const card = cardsArray.find(c => c.textContent.toLowerCase().startsWith(bairroCapitalizado.toLowerCase()));
           if (card) {
@@ -348,7 +355,6 @@
           }
         } else {
           result.textContent = 'Bairro não encontrado. ❌';
-          // Remove destaque dos cards
           Array.from(cards.children).forEach(c => c.style.background = '');
         }
       });
